@@ -43,12 +43,11 @@ namespace WebScrapData.Controllers
         [HttpPost]
         public async Task<IActionResult> ScrapeData(IFormCollection form)
         {
-            Book bookList = new Book();
+            string apiUrl = "https://localhost:7230/api/DataScrap?url=" + form["URL"];
+            var client = _httpClient.CreateClient();
 
             try
             {
-                string apiUrl = "https://localhost:7230/api/DataScrap?url=" + form["URL"];
-                var client = _httpClient.CreateClient();
                 var response = await client.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
@@ -61,7 +60,7 @@ namespace WebScrapData.Controllers
                     {
                         foreach (var item in books)
                         {
-                            bookList = new Book()
+                           var bookList = new Book()
                             {
                                 Id = item.Id,
                                 Title = item.Title,

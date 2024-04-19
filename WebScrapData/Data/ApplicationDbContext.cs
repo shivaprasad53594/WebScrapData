@@ -11,6 +11,9 @@ namespace WebScrapData.Data
                 
         }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Mobile> Mobiles { get; set; }  
+        public DbSet<Reliance> Reliance { get; set; }  
+        public DbSet<Shopclues> Shopclues { get; set; }  
     }
     
 }
